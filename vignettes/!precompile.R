@@ -4,20 +4,22 @@ library(knitr)
 library(here)
 library(devtools)
 
-# ensure using latest version
 install("./")
 
 knit(
-  input = "vignettes/read.abares.Rmd.orig",
-  output = "vignettes/read.abares.Rmd"
+  input = "vignettes/spatial_data_in_read.abares.Rmd.orig",
+  output = "vignettes/spatial_data_in_read.abares.Rmd"
 )
 
-purl("vignettes/read.abares.Rmd.orig", output = "vignettes/read.abares.R")
+purl(
+  "vignettes/spatial_data_in_read.abares.Rmd.orig",
+  output = "vignettes/spatial_data_in_read.abares.R"
+)
 
 # remove file path such that vignettes will build with figures
-ra_replace <- readLines("vignettes/read.abares.Rmd")
+ra_replace <- readLines("vignettes/spatial_data_in_read.abares.Rmd")
 ra_replace <- gsub("<img src=\"vignettes/", "<img src=\"", ra_replace)
-ra_file_conn <- file("vignettes/read.abares.Rmd")
+ra_file_conn <- file("vignettes/spatial_data_in_read.abares.Rmd")
 writeLines(ra_replace, ra_file_conn)
 close(ra_file_conn)
 

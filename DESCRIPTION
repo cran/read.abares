@@ -1,16 +1,12 @@
 Type: Package
 Package: read.abares
-Title: Read Data from the Australian Bureau of Agricultural and
-        Resource Economics and Sciences (ABARES) and Australian Bureau
-        of Statistics (ABS)
-Version: 2.0.0
+Title: Read Australian Agricultural Data from Government Agencies
+Version: 3.0.0
 Authors@R: c(
     person("Adam H.", "Sparks", , "adamhsparks@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-0061-8359")),
-    person("Curtin University", role = c("fnd", "cph"),
+    person("Curtin University", role = "cph",
            comment = c("http://www.curtin.edu.au/", ROR = "02n415q13")),
-    person("Grains Research and Development Corporation", role = c("fnd", "cph"),
-           comment = c(Project = "GRDC Project CUR2210-005OPX (AAGI-CU)", ROR = "02xwr1996")),
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = "ctb",
            comment = c("Assisted with troubleshooting formatting in documentation to display '<' and '>' properly", ORCID = "0000-0002-7281-3989")),
     person("Nicholas", "Potter", , "econpotter@gmail.com", role = "rev",
@@ -18,21 +14,21 @@ Authors@R: c(
     person("María Paula", "Caldas", , "mpaulacaldas@gmail.com", role = "rev",
            comment = c("rOpenSci Review https://github.com/ropensci/software-review/issues/667", ORCID = "0000-0002-1938-6471"))
   )
-Description: Download and import agricultural data from the Australian
+Description: Downloads and imports agricultural data from the Australian
     Bureau of Agricultural and Resource Economics and Sciences (ABARES)
-    <https://www.agriculture.gov.au/abares> and Australian Bureau of
-    Statistics (ABS) <https://www.abs.gov.au>. Data types serviced include
-    spreadsheets, comma separated value (CSV) files, geospatial data
-    including shape files and geotiffs covering topics including broadacre
-    crops, livestock, soil data, commodities and more. Unifies field names
-    and formats for data interoperability making analysis easier by
-    standardising names between data formats. Also simplifies importing
-    geospatial data as well as correcting issues in the geospatial data
-    upon import.
+    <https://www.agriculture.gov.au/abares> and the Australian Bureau of
+    Statistics (ABS) <https://www.abs.gov.au>. Supports multiple data
+    formats including spreadsheets, comma‑separated value (CSV) files, and
+    geospatial data such as shapefiles and GeoTIFFs. Covers topics such as
+    broadacre crops, livestock, soils, commodities and related
+    agricultural information. The package standardises field names and
+    data formats to improve interoperability and simplify analysis. It
+    also streamlines the import of geospatial data and corrects common
+    issues found in these data sources upon loading.
 License: MIT + file LICENSE
-URL: https://github.com/ropensci/read.abares,
-        https://docs.ropensci.org/read.abares/
-BugReports: https://github.com/ropensci/read.abares/issues
+URL: https://docs.ropensci.org/read.abares/,
+        https://codeberg.org/ropensci/read.abares
+BugReports: https://codeberg.org/ropensci/read.abares/issues
 Depends: R (>= 4.1.0)
 Imports: brio, cli, data.table, fs, htm2txt, httr2, lubridate, purrr,
         readxl, rlang, sf, stars, stringr, terra, tidync, utils,
@@ -41,21 +37,20 @@ Suggests: bit64, knitr, openxlsx, pander, rmarkdown, roxyglobals,
         skimr, spelling, testthat (>= 3.0.0), zip
 VignetteBuilder: knitr
 Config/Needs/build: moodymudskipper/devtag
+Config/roxygen2/version: 8.0.0
 Config/roxyglobals/filename: globals.R
 Config/roxyglobals/unique: FALSE
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 Language: en-US
-RoxygenNote: 7.3.3
+LazyData: true
 NeedsCompilation: no
-Packaged: 2026-01-17 04:47:29 UTC; adamsparks
+Packaged: 2026-06-01 01:07:57 UTC; adamsparks
 Author: Adam H. Sparks [cre, aut] (ORCID:
     <https://orcid.org/0000-0002-0061-8359>),
-  Curtin University [fnd, cph] (http://www.curtin.edu.au/, ROR:
+  Curtin University [cph] (http://www.curtin.edu.au/, ROR:
     <https://ror.org/02n415q13>),
-  Grains Research and Development Corporation [fnd, cph] (Project: GRDC
-    Project CUR2210-005OPX (AAGI-CU), ROR: <https://ror.org/02xwr1996>),
   Jacob Wujciak-Jens [ctb] (Assisted with troubleshooting formatting in
     documentation to display '<' and '>' properly, ORCID:
     <https://orcid.org/0000-0002-7281-3989>),
@@ -67,4 +62,4 @@ Author: Adam H. Sparks [cre, aut] (ORCID:
     <https://orcid.org/0000-0002-1938-6471>)
 Maintainer: Adam H. Sparks <adamhsparks@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-01-22 09:30:02 UTC
+Date/Publication: 2026-06-01 06:50:11 UTC

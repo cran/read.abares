@@ -2,14 +2,13 @@
 
 
 
-# {read.abares}: Download and Import Agricultural Data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) and Australian Bureau of Statistics (ABS) <img src="man/figures/logo.png" align="right"/>
+# {read.abares}: Read Australian Agricultural Data from Government Agencies <img src="man/figures/logo.png" align="right"/>
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/ropensci/read.abares/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/read.abares/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/ropensci/read.abares/graph/badge.svg?token=RJcUkWMSfo)](https://app.codecov.io/gh/ropensci/read.abares)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/667_status.svg)](https://github.com/ropensci/software-review/issues/667)
+[![CRAN status](https://www.r-pkg.org/badges/version/read.abares)](https://CRAN.R-project.org/package=read.abares)
 <!-- badges: end -->
 
 An R package for automated downloading and ingestion of data from the Australian Bureau of Agricultural and Resource Economics and Sciences (ABARES) and agricultural data from the Australian Bureau of Statistics (ABS).
@@ -43,36 +42,21 @@ Data serviced includes but is not limited to:
 
 ## Quick Start
 
-{read.abares} is not available through CRAN (yet).
-The preferred method is to use [{remotes}](https://remotes.r-lib.org) like so.
-Note that for Linux users, you will need to install system libraries to support geospatial packages in R, _e.g._, {sf} and {terra} as well as some packages for downloading data via [curl](https://curl.se/download.html).
-Linux users, please see[^2].
+{read.abares} is available on CRAN, so you can install it with:
 
-```r
-install.packages("read.abares",
-  repos = c('https://ropensci.r-universe.dev',
-    'https://cloud.r-project.org'))
+
+``` r
+install.packages("read.abares")
 ```
 
-Or, if you prefer using [{pak}](https://pak.r-lib.org/index.html), it does have some advantages.
-If you are using Linux and will need to install system libraries to support geospatial packages in R, _e.g._, {sf} and {terra}, you can install {read.abares} like so using [{pak}](https://pak.r-lib.org/index.html), this method will try to handle system dependencies for you.
-It may also be a faster installation method as well for any operating system.
+{read.abares} is also available on [rOpenSci's R-universe](https://ropensci.r-universe.dev/) CRAN-like repository and offers access to pre-CRAN releases.
+You can install it from there like so:
 
 ```r
-o <- options() # save default options
-options(pkg.build_vignettes = TRUE)
-
-if (!require("pak")) {
-  install.packages("pak",
-    repos = sprintf(
-      "https://r-lib.github.io/p/pak/stable/%s/%s/%s",
-      .Platform$pkgType, R.Version()$os, R.Version()$arch
-    )
-  )
-}
-
-pak::pak("ropensci/read.abares", dependencies = TRUE)
-options(o) # restore default options
+install.packages(
+  "read.abares",
+  repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org')
+)
 ```
 
 ## Features
@@ -109,7 +93,7 @@ Or for the Soil Thickness for Australian areas of intensive agriculture of Layer
 There are three levels that are offered.
 
   - `quiet` - no feedback except for on failure,
-  - `minimal` - feedback on failure and warnings is provided, and
+  - `default` - feedback on failure and warnings is provided, and
   - `verbose` - verbose feedback is provided on failure, warning and for processes like download time or data import.
 
 ## About Data Serviced
@@ -133,22 +117,38 @@ Citing {read.abares}: When citing the use of this package, please use,
 
 ``` r
 library(read.abares)
+#> 
+#> Attaching package: 'read.abares'
+#> The following object is masked from 'package:graphics':
+#> 
+#>     plot
+#> The following objects are masked from 'package:base':
+#> 
+#>     levels, plot
 citation("read.abares")
-#> Error in `parse()`:
-#> ! 8:13: unexpected symbol
-#> 7:   author = c(
-#> 8:     person("Adam
-#>                ^
+#> To cite package 'read.abares' in publications use:
+#> 
+#>   Sparks A (????). _read.abares: Read Data from the Australian Bureau of Agricultural and Resource
+#>   Economics and Sciences (ABARES) and Australian Bureau of Statistics (ABS)_. R package version 2.1.0,
+#>   <https://docs.ropensci.org/read.abares/>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {{read.abares}: Read Data from the Australian Bureau of Agricultural
+#>     and Resource Economics and Sciences (ABARES) and Australian Bureau of
+#>     Statistics (ABS)},
+#>     author = {Adam H. Sparks},
+#>     note = {R package version 2.1.0},
+#>     url = {https://docs.ropensci.org/read.abares/},
+#>   }
 ```
 
 ### Contributing
 
 #### Code of Conduct
 
-Please note that the {read.abares} project is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
+Please note that the {read.abares} project is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/).
+By contributing to this project, you agree to abide by its terms.
 
 [^1]: <https://www.agriculture.gov.au/abares/about>
-[^2]: If you are using Linux, you will likely need to install several system-level libraries, {pak} will do it's best to install most of them but some may not be installable this way.
-For [Nectar](https://ardc.edu.au/services/ardc-nectar-research-cloud/) with a fresh Ubuntu image, you can use the following command to install system libraries to install {pak} and then {read.abares}.
-In your Linux terminal (not your R console, the "terminal" tab in RStudio should do here in most cases) type:
-`sudo apt update && sudo apt install libcurl4-openssl-dev libgdal-dev gdal-bin libgeos-dev libproj-dev libsqlite3-dev libudunits2-dev libxml2-dev`.

@@ -1,11 +1,38 @@
+
+# read.abares 3.0.0
+
+## Breaking Changes
+
+- `read_abares_trade()` returns all character strings as factors that are sorted by "Trade_flow", "Fiscal_year", "Month", "Trade_code", "State", "Australian_port", "Overseas_location".
+- Verbosity option changed from "minimal" to "default", aligns with {rlang} values.
+- Verbosity is now set to "default" by default, not "verbose".
+
+## Minor Changes
+
+- Users can now request trade code descriptions to be included in `read_abares_trade()`.
+
+## Bug fixes
+
+- Download caching now works as intended, files are not re-downloaded during the current session.
+- `read_abares_trade()` no longer drops the leading "0" in the "Trade_codes" column.
+- Fixed a misconfigured footnote in the "Setting Global Options for "Working with Spatial Data in read.abares" vignette.
+
+# read.abares 2.0.1 (Unreleased)
+
+## Minor Changes
+
+- Update title in DESCRIPTION to be <65 characters for CRAN compliance.
+
 # read.abares 2.0.0
 
 - Accepted into [rOpenSci](https://ropensci.org/) as of 2026-01-13!
 
-## Breaking changes
+- On [CRAN](https://cran.r-project.org/package=read.abares) as of 2026-01-22!
+
+## Breaking Changes
 
 - `soil_thickness` functions are now `topsoil_thickness` functions, _e.g._, `read_soil_thickness_stars()` is now `read_topsoil_thickness_stars()`.
-  This is to clarify that the data is for topsoil only and not all soil layers, thanks, @obrsoil!
+  This is to clarify that the data is for topsoil only and not all soil layers, thanks, @obr-soil!
 
 - `get_` functions are now integrated into `read_`, there is no need to call any `get_` functions separately or use piping.
 
@@ -49,15 +76,15 @@
 
 - [{bit64}](https://cran.r-project.org/package=bit64) has been added to the Suggested packages to help users avoid warning messages when working with data in the console via {data.table}, thanks, @potterzot.
 
-- Alternative installation instructions using {remotes} are provided in the README for users that may prefer or may not use [{pak}](https://cran.r-project.org/package=pak), thanks, @potterzot.
+- Alternative installation instructions using {remotes} are provided in the README for users that may prefer or may not use [{pak}](https://cran.r-project.org/package=pak), thanks, @econpotter.
 
-- The topsoil thickness map now correctly displays proper continuous values rather than classes, thanks, @obrsoil.
+- The topsoil thickness map now correctly displays proper continuous values rather than classes, thanks, @obr-soil.
 
-- The geospatial vignette examples run more quickly, except for the AAGIS examples, which are still slow due to large downloads, but all local operations in R now run much more quickly, thanks to @potterzot.
+- The geospatial vignette examples run more quickly, except for the AAGIS examples, which are still slow due to large downloads, but all local operations in R now run much more quickly, thanks to @econpotter.
 
 # read.abares 1.0.0
 
-## Breaking changes
+## Breaking Changes
 
 - Rename functions that both download and read files into active R session from `get_` to `read_` to avoid confusion with functions that only fetch data and have separate `read_` functions
 

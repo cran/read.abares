@@ -1,17 +1,5 @@
-test_that(".map_verbosity maps inputs correctly", {
-  # These are safe to test because they don't depend on side effects
-  expect_identical(.map_verbosity("quiet")$warn, -1L)
-  expect_identical(.map_verbosity("minimal")$warn, 0L)
-  expect_true(.map_verbosity("verbose")$datatable.showProgress)
-
-  # Test defaults
-  expect_identical(.map_verbosity(NULL)$rlib_message_verbosity, "verbose")
-})
-
 test_that("read.abares_user_agent constructs correct strings", {
   # Test the CI path
-  # NOTE: Your source code has "READABARES _CI" (with a space).
-  # If you fix the typo in the source, update this string.
   withr::local_envvar(list("READABARES_CI" = "true"))
 
   ua <- read.abares_user_agent()
@@ -23,7 +11,7 @@ test_that("read.abares_user_agent constructs correct strings", {
 
 test_that("read.abares_user_agent handles standard users", {
   # Ensure CI is off
-  withr::local_envvar(list("READABARES _CI" = ""))
+  withr::local_envvar(list("READABARES_CI" = ""))
 
   # We can't easily mock 'whoami' without extra packages,
   # so we test that it produces A valid string, regardless of DEV/Standard status
@@ -50,5 +38,5 @@ test_that("Package options are initialized correctly", {
   expect_false(is.null(defaults$timeout))
   expect_identical(defaults$timeout, 5000L)
   expect_identical(defaults$tries, 3L)
-  expect_identical(defaults$verb, "verbose")
+  expect_identical(defaults$verb, "default")
 })

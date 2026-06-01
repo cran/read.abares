@@ -6,8 +6,8 @@ test_that(".map_verbosity maps inputs correctly", {
   expect_false(quiet$datatable.showProgress)
 
   # Test "minimal"
-  minimal <- .map_verbosity("minimal")
-  expect_identical(minimal$rlib_message_verbosity, "minimal")
+  minimal <- .map_verbosity("default")
+  expect_identical(minimal$rlib_message_verbosity, "default")
   expect_identical(minimal$warn, 0L)
   expect_false(minimal$datatable.showProgress)
 
@@ -23,14 +23,14 @@ test_that(".map_verbosity handles garbage inputs gracefully", {
 
   # NULL
   res <- .map_verbosity(NULL)
-  expect_identical(res$rlib_message_verbosity, "verbose")
-  expect_true(res$datatable.showProgress)
+  expect_identical(res$rlib_message_verbosity, "default")
+  expect_false(res$datatable.showProgress)
 
   # Invalid string
   res <- .map_verbosity("super_loud_mode")
-  expect_identical(res$rlib_message_verbosity, "verbose")
+  expect_identical(res$rlib_message_verbosity, "default")
 
   # NA
   res <- .map_verbosity(NA)
-  expect_identical(res$rlib_message_verbosity, "verbose")
+  expect_identical(res$rlib_message_verbosity, "default")
 })
